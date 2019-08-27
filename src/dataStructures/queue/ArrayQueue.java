@@ -20,19 +20,45 @@ public class ArrayQueue {
         return this.rear == this.maxSize - 1;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return this.rear == this.front;
     }
 
-    public int[] addQueue(int n){
-        if(this.isFull()){
+    public void addQueue(int n) {
+        if (this.isFull()) {
             System.out.println("The queue is full now...");
-
-        }else{
-            rear ++;
-            arr[rear] = n;
+            return;
         }
-        return this.arr;
+        rear++;
+        arr[rear] = n;
+
+    }
+
+    public int popQueue() {
+        if (this.isEmpty()) {
+            throw new RuntimeException("The queue is empty now...");
+        }
+        front++;
+        int result = arr[front];
+        arr[front] = 0;
+        return result;
+    }
+
+    public void showQueue() {
+        if (this.isEmpty()) {
+            System.out.println("The queue is empty now...");
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.printf("arr[%d] = %d\n", i, arr[i]);
+        }
+    }
+
+    public int peekQueue() {
+        if (this.isEmpty()) {
+            throw new RuntimeException("The queue is empty now...");
+        }
+        return arr[front + 1];
     }
 
 }
