@@ -7,16 +7,17 @@ import java.util.Scanner;
  */
 public class TestMain {
     public static void main(String[] args) {
-        ArrayQueue arr = new ArrayQueue(5);
+//        ArrayQueue arr = new ArrayQueue(5); //普通队列
+        LoopQueue arr = new LoopQueue(5); //环形队列
         char key = ' ';
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while (loop) {
-            System.out.println("s:show queue.");
+            System.out.println("s:show queue");
             System.out.println("e:exit.");
-            System.out.println("a:add queue.");
-            System.out.println("p:pop queue..");
-            System.out.println("h:peek queue.");
+            System.out.println("a:add queue");
+            System.out.println("p:pop queue");
+            System.out.println("h:peek queue");
 
             key = scanner.next().charAt(0);
             switch (key) {
@@ -24,7 +25,7 @@ public class TestMain {
                     arr.showQueue();
                     break;
                 case 'a':
-                    System.out.println("enter a number:");
+                    System.out.println("enter a number:_");
                     int value = scanner.nextInt();
                     arr.addQueue(value);
                     break;
