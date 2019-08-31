@@ -10,6 +10,7 @@ public class FileLoaderAndCommit {
     public  FileLoaderAndCommit(String fileName){
         this.fileName = fileName;
     }
+
     //loading user information
    public HashMap<String,User> loadFile() {
        HashMap<String, User> userBox = new HashMap<String, User>();
