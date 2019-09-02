@@ -3,29 +3,29 @@ package dataStructures;
 /**
  * Created by Tommy on 2019/8/24.
  */
-public class LinkedListBox implements Box {
-
-
+public class  LinkedListBox implements Box {
+// 将 first 与 last 想象成 游标，不断移动。
     private Node first;
     private Node last;
     private int size;
 
-    private void linkLast(int element) {
-        Node l = last;
-        Node newNode = new Node(l, element, null);
-        last = newNode;
+    private void linkToLast(int element) {
+        Node tailNode = this.last;
+        Node newNode = new Node(tailNode, element, null);
+        this.last = newNode;
 
-        if (l == null) {
-            first = newNode;
+        //判断 当前 为空链表。添加的 node 为第一个node
+        if (tailNode == null) {
+            first = newNode; //  first 与 last 指针位置都在 第一 node 上。
         } else {
-            l.next = newNode;
+            tailNode.next = newNode;
         }
-        size++;
+        this.size++;
     }
 
     private void rangeCheck(int index) {
-        if (index < 0 || index >= size) {
-            throw new BoxIndexOutOfBoundsException("index: " + index + " size:" + size);
+        if (index < 0 || index >= this.size) {
+            throw new BoxIndexOutOfBoundsException("index: " + index + " size:" + this.size);
         }
     }
 
@@ -35,8 +35,9 @@ public class LinkedListBox implements Box {
     * */
     private Node findNode(int index) {
         Node targetNode;
-        if (index < (size >> 1)) {
-            targetNode = first;
+        //双向查找 根据 index 与 size 的大小
+        if (index < (this.size >> 1)) {
+            targetNode = this.first;
             for (int i = 0; i < index; i++) {
                 targetNode = targetNode.next;
             }
@@ -45,7 +46,6 @@ public class LinkedListBox implements Box {
             for (int i = size - 1; i > index; i--) {
                 targetNode = targetNode.prev;
             }
-
         }
 
         return targetNode;
@@ -58,14 +58,14 @@ public class LinkedListBox implements Box {
         Node nextNode = targetNode.next;
         //prevNode is first node.
         if (prevNode == null) {
-            first = nextNode; //将要删除的下一个node 作为头
+            this.first = nextNode; //将要删除的下一个node 作为头
         } else {
             prevNode.next = nextNode;//将要删除 node 的上一个元素的 next 地址改为要删除 node 下一个元素
             targetNode.prev = null;
         }
         // 要删除的目标是最后一个 node
         if (nextNode == null) {
-            last = prevNode; //将要删除的上一个node 作为尾
+            this.last = prevNode; //将要删除的上一个node 作为尾
         } else {
             nextNode.prev = prevNode;
             targetNode.next = null;
@@ -77,7 +77,7 @@ public class LinkedListBox implements Box {
 
     @Override
     public boolean add(int element) {
-        this.linkLast(element);
+        this.linkToLast(element);
         return true;
     }
 
@@ -89,7 +89,7 @@ public class LinkedListBox implements Box {
     }
 
     @Override
-    public int pop(int index) {
+     public int pop(int index) {
         this.rangeCheck(index);
         Node targetNode = findNode(index);
         int oldValue = this.unLink(targetNode);
@@ -101,4 +101,5 @@ public class LinkedListBox implements Box {
     public int size() {
         return size;
     }
+
 }
