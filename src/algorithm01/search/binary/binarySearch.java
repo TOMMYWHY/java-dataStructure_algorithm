@@ -28,6 +28,7 @@ public class binarySearch {
     }
 
     private static ArrayList<Integer> searchAll(int[] arr, int left, int right, int findValue) {
+        System.out.println("searching....");
 
         if (left > right) {
             return new ArrayList<Integer>();
