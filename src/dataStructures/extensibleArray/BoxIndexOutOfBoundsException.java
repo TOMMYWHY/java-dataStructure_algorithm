@@ -1,4 +1,4 @@
-package dataStructures;
+package dataStructures.extensibleArray;
 
 /**
  * Created by Tommy on 2019/8/24.

@@ -1,9 +1,9 @@
-package dataStructures;
+package dataStructures.extensibleArray;
 
 /**
  * Created by Tommy on 2019/8/24.
  */
-public class StackArrayBox implements Box{
+public class StackArrayBox implements Box {
     private static final int DEFAULT_CAPACITY =0;
     private int[] elementData;
     private int size;

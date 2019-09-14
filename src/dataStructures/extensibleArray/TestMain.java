@@ -1,4 +1,6 @@
-package dataStructures;
+package dataStructures.extensibleArray;
+
+import dataStructures.extensibleArray.LinkedListBox;
 
 /**
  * Created by Tommy on 2019/8/24.
