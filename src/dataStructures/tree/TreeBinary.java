@@ -24,6 +24,8 @@ public class TreeBinary {
         if (resNode != null) {
             System.out.println("searching result : " + resNode.toString());
         }
+        binaryTree.delNode(2);
+        binaryTree.preOrdering();
 
 //        System.out.println("infixOrder");
 //        binaryTree.infixOrdering();
@@ -43,6 +45,17 @@ class BinaryTree {
         this.root = root;
     }
 
+    public void delNode(int id){
+        if (root !=null){
+            if(root.getId() == id){
+                root = null;
+            }else {
+                root.deleteNode(id);
+            }
+        }else {
+            System.out.printf("tree is empty");
+        }
+    }
     public void preOrdering() {
         if (this.root != null) {
             this.root.preOrder();
@@ -93,6 +106,23 @@ class Node {
     private Node leftIndex;
     private Node rightIndex;
 
+    public void deleteNode(int id ){
+        if (this.leftIndex != null && this.leftIndex.id == id){
+            this.leftIndex =null;
+            return;
+        }
+        if(this.rightIndex !=null && this.rightIndex.id == id){
+            this.rightIndex=null;
+            return;
+        }
+        if(this.leftIndex !=null){
+            this.leftIndex.deleteNode(id);
+        }
+        if(this.rightIndex !=null){
+            this.rightIndex.deleteNode(id);
+        }
+
+    }
 
     /*
     Preorder Traversal  DLR
