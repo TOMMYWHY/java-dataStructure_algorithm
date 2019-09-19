@@ -1,13 +1,32 @@
 package algorithm01.sort.heap;
 
+import java.util.Arrays;
+
 public class Heap {
     public static void main(String[] args) {
-        int[] arr = {4, 6, 8, 5, 9};
+        int[] arr = {4, 6, 8, 5, 9,-1,90,2,-8};
+        sort(arr);
     }
 
     private static void sort(int[] arr) {
-        System.out.println("heap sort");
+     /*   System.out.println("heap sort");
+        adjustHeap(arr,1,arr.length);
+        System.out.println(Arrays.toString(arr));
+        adjustHeap(arr,0,arr.length);
+        System.out.println(Arrays.toString(arr));*/
+     for (int i = arr.length/2 -1 ; i >=0;i--){
+         adjustHeap(arr,i,arr.length);
+     }
+        System.out.println(Arrays.toString(arr));
+     int temp = 0;
+     for(int j = arr.length-1;j>0;j--){
+        temp= arr[j];
+        arr[j] = arr[0];
+        arr[0]= temp;
+         adjustHeap(arr,0,j);
 
+     }
+        System.out.println(Arrays.toString(arr));
     }
 
     private static void adjustHeap(int[] arr, int i, int length) {
