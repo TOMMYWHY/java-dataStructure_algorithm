@@ -30,6 +30,10 @@ public class ThreadedBinaryTrees {
         System.out.println(node5.toString());
         System.out.println("leftNode"+left);
         System.out.println("rightNode"+right);
+
+        System.out.println("traverse");
+        binaryTree.threadedList();
+
     }
 
 }
@@ -67,6 +71,24 @@ class BinaryTree {
         threadedNodes(node.getRightIndex());
 
 
+    }
+
+    /*
+    traverse    中序线索
+    * */
+    public void  threadedList(){
+        Node node = root;
+        while (node !=null){
+            while (node.getLeftType()==0){
+                node = node.getLeftIndex();
+            }
+            System.out.println(node.toString());
+            while (node.getRightType()==1){
+                node= node.getRightIndex();
+                System.out.println(node.toString());
+            }
+            node = node.getRightIndex();
+        }
     }
 
     public void delNode(int id){
