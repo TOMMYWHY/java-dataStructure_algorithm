@@ -81,16 +81,25 @@ class BinarySortTree {
                 //        也可从左侧 找最大值，替换成 target
             } else { //target 有一个节点
                 if (targetNode.leftIndex != null) {
-                    if (parent.leftIndex.value == value) { //|| parent.leftIndex == targetNode
-                        parent.leftIndex = targetNode.leftIndex;
-                    } else { //parent.rightIndex.value == value
-                        parent.rightIndex = targetNode.leftIndex;
+                    //
+                    if(parent !=null ){
+                        if (parent.leftIndex.value == value) { //|| parent.leftIndex == targetNode
+                            parent.leftIndex = targetNode.leftIndex;
+                        } else { //parent.rightIndex.value == value
+                            parent.rightIndex = targetNode.leftIndex;
+                        }
+                    } else {
+                            root = targetNode.leftIndex;
                     }
                 } else { //targetNode.rightNode !=null
-                    if (parent.leftIndex == targetNode) { //parent.leftIndex.value == value ||
-                        parent.leftIndex = targetNode.rightIndex;
-                    } else {
-                        parent.rightIndex = targetNode.rightIndex;
+                    if(parent !=null){
+                        if (parent.leftIndex == targetNode) { //parent.leftIndex.value == value ||
+                            parent.leftIndex = targetNode.rightIndex;
+                        } else {
+                            parent.rightIndex = targetNode.rightIndex;
+                        }
+                    }else {
+                        root = targetNode.rightIndex;
                     }
                 }
             }
