@@ -36,12 +36,13 @@ public class Heap {
         int temp = arr[i]; // 非叶子节点
         //k 是 i 的左子节点
         for (int k = (i * 2 + 1); k < length; k = k * 2 + 1) {
+//            选出 左右 较大的下标。 只需找到左右中一个大的值 与 父节点交换
             if (k + 1 < length && arr[k] < arr[k + 1]) { // 左< 右
-                k++;
+                k++; // k 为 右子节点 下标
             }
-            if(arr[k]>temp){ //左>父
-                arr[i] = arr[k]; // 大只给 arr【i】
-                i = k; // k 赋值给 i， 继续执行，有点想递归
+            if(arr[k]>temp){ //右or 左 >父
+                arr[i] = arr[k]; // 大值给 arr【i】
+                i = k; // k 赋值给 i， 继续执行，有点向递归
             }else {break;}
         }
         arr[i] =temp;

@@ -2,7 +2,7 @@ package algorithm01.sort.insertion;
 
 import java.util.Arrays;
 
-public class inserSortA {
+public class insertSortA {
     public static void main(String[] args) {
         int[] arr = {2, 1, 5, 9, 6, 11};
 

@@ -6,7 +6,7 @@ public class BST {
      * */
     public static void main(String[] args) {
         int[] arr = {7, 3, 10, 12, 5, 1, 9, 0,2};
-        BinarySortTree binarySortTree = new BinarySortTree();
+    BinarySortTree binarySortTree = new BinarySortTree();
         for (int value : arr) {
             binarySortTree.add(new Node(value));
         }
